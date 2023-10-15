@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TaskManagerX.Views.RegisterItemView"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:viewmodel="clr-namespace:TaskManagerX.ViewModels"
+             x:DataType="viewmodel:TodoItemsViewModel"
+             BackgroundColor="White">
+
+    <Page.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="{StaticResource Gray600}" StatusBarStyle="Default"/>
+    </Page.Behaviors>
+
+    <StackLayout Orientation="Vertical" Margin="10">
+        
+        <Label Text="Tarefa"
+           TextColor="Gray"
+           FontAttributes="Bold"
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start"
+           FontSize="25"/>
+
+        <Frame BorderColor="LightGray"
+           BackgroundColor="White"
+           CornerRadius="5"
+           HasShadow="True">
+            <Entry Text="{Binding Title}"
+               Placeholder="Digite o título da tarefa"
+               TextColor="{StaticResource Gray900}"
+               Margin="5"
+               FontSize="20"
+               FontAttributes="Bold"
+               MaxLength="40"/>
+        </Frame>
+
+        <Label Text="Descrição"
+           TextColor="Gray"
+           FontAttributes="Bold"
+           HorizontalTextAlignment="Start"
+           VerticalTextAlignment="Start"
+           Margin="0,10,0,0"
+           FontSize="25"/>
+
+        <Frame BorderColor="LightGray"
+           BackgroundColor="White"
+           CornerRadius="5"
+           HasShadow="True"
+           HeightRequest="200">
+            <Editor Text="{Binding Description}"
+                Placeholder="Escreva uma breve descrição caso seja necessário"
+                TextColor="{StaticResource Gray900}"
+                Margin="5"
+                FontSize="17"
+                FontAttributes="Bold"/>
+        </Frame>
+
+        <Button Text="Salvar Tarefa" 
+            Command="{Binding AddCommand}" 
+            CommandParameter="{Binding .}"
+            BackgroundColor="DarkOrange"
+            TextColor="White"
+            FontSize="20"
+            FontAttributes="Bold"
+            HorizontalOptions="Center" 
+            Margin="0,60,0,0"
+            HeightRequest="60"
+            WidthRequest="200"/>
+    </StackLayout>
+
+</ContentPage>
+    
