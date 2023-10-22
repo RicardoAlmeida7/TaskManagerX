@@ -64,7 +64,7 @@ namespace TaskManagerX.ViewModels
         [ICommand]
         private void Update(TodoItem item)
         {
-            item.IsCompleted = true;
+            item.IsCompleted = !item.IsCompleted;
             _repository.UpdateItem(item);
             UpdatesTheViewList(item);
         }
