@@ -5,19 +5,12 @@
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
              xmlns:viewmodel="clr-namespace:TaskManagerX.ViewModels"
              xmlns:models="clr-namespace:TaskManagerX.Models"
-             xmlns:local="clr-namespace:TaskManagerX.Views.Utils"
              x:DataType="viewmodel:TodoItemsViewModel"
              BackgroundColor="White">
 
     <Page.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="{StaticResource Gray600}" StatusBarStyle="Default"/>
     </Page.Behaviors>
-
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <local:ColorChangedConverter x:Key="ColorChangedConverter"/>
-        </ResourceDictionary>
-    </ContentPage.Resources>
 
     <CollectionView x:Name="cvTodo" 
                     ItemsSource="{Binding TodoItems}"
@@ -26,7 +19,7 @@
             <DataTemplate>
                 <SwipeView>
                     <SwipeView.LeftItems>
-                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                        <SwipeItems SwipeBehaviorOnInvoked="Auto">
                             <SwipeItem IconImageSource="trash.svg"
                                        BackgroundColor="DarkOrange" 
                                         Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TodoItemsViewModel}}, Path=DeleteCommand}"
@@ -34,7 +27,7 @@
                         </SwipeItems>
                     </SwipeView.LeftItems>
                     <SwipeView.RightItems>
-                        <SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+                        <SwipeItems SwipeBehaviorOnInvoked="Auto">
                             <SwipeItem IconImageSource="check.svg"
                                        BackgroundColor="Green"
                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TodoItemsViewModel}}, Path=UpdateCommand}"

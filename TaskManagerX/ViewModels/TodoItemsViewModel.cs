@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TaskManagerX.Infra.Data.Repositories;
 using TaskManagerX.Models;
+using TaskManagerX.ViewModels.Constants;
 
 namespace TaskManagerX.ViewModels
 {
@@ -36,7 +37,7 @@ namespace TaskManagerX.ViewModels
 
             todoItems.Add(todoItem);
             _repository.AddItem(todoItem);
-            ClearFields();
+            GoToMainPage();
         }
 
         [ICommand]
@@ -76,10 +77,11 @@ namespace TaskManagerX.ViewModels
                 TodoItems[index] = item;
         }
 
-        private void ClearFields()
+        private void GoToMainPage()
         {
             Description = string.Empty;
             Title = string.Empty;
+            Shell.Current.GoToAsync(ShellUri.MAIN).Wait();
         }
     }
 }
